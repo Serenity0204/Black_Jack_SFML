@@ -66,25 +66,25 @@ ADD_EXECUTABLE(basic_test
     ${SOURCE_FILES}
 )
 
-ADD_EXECUTABLE(sfml_example1
-    _examples/_sfml_examples/sfml_example1.cpp
-    ${SOURCE_FILES}
-)
+# ADD_EXECUTABLE(sfml_example1
+#     _examples/_sfml_examples/sfml_example1.cpp
+#     ${SOURCE_FILES}
+# )
 
 ADD_EXECUTABLE(testB
     _tests/_test_files/testB.cpp
     ${SOURCE_FILES}
 )
 
-ADD_EXECUTABLE(sfml_example2
-    _examples/_sfml_examples/sfml_example2.cpp
-    ${SOURCE_FILES}
-)
+# ADD_EXECUTABLE(sfml_example2
+#     _examples/_sfml_examples/sfml_example2.cpp
+#     ${SOURCE_FILES}
+# )
 
-ADD_EXECUTABLE(sfml_example3
-    _examples/_sfml_examples/sfml_example3.cpp
-    ${SOURCE_FILES}
-)
+# ADD_EXECUTABLE(sfml_example3
+#     _examples/_sfml_examples/sfml_example3.cpp
+#     ${SOURCE_FILES}
+# )
 
 
 
