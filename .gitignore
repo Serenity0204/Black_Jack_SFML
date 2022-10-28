@@ -78,7 +78,6 @@ bin/
 build/
 cmake_install.cmake
 googletest/
-_examples/
 .vs
 out/
 build/other/
