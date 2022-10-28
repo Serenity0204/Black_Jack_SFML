@@ -92,14 +92,14 @@ ADD_EXECUTABLE(testB
 
 TARGET_LINK_LIBRARIES(basic_test gtest)
 TARGET_LINK_LIBRARIES(testB gtest)
-TARGET_LINK_LIBRARIES(sfml_example1 gtest)
-TARGET_LINK_LIBRARIES(sfml_example2 gtest)
-TARGET_LINK_LIBRARIES(sfml_example3 gtest)
+# TARGET_LINK_LIBRARIES(sfml_example1 gtest)
+# TARGET_LINK_LIBRARIES(sfml_example2 gtest)
+# TARGET_LINK_LIBRARIES(sfml_example3 gtest)
 
 
 ## copy resources file to build
 file(COPY assets DESTINATION ${CMAKE_BINARY_DIR})
-file(COPY example3_images DESTINATION ${CMAKE_BINARY_DIR})
+# file(COPY example3_images DESTINATION ${CMAKE_BINARY_DIR})
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
 find_package(SFML REQUIRED system window graphics network audio)
@@ -108,9 +108,9 @@ if (SFML_FOUND)
     target_link_libraries(main ${SFML_LIBRARIES})
     target_link_libraries(basic_test ${SFML_LIBRARIES})
     target_link_libraries(testB ${SFML_LIBRARIES})
-    target_link_libraries(sfml_example1 ${SFML_LIBRARIES})
-    target_link_libraries(sfml_example2 ${SFML_LIBRARIES})
-    target_link_libraries(sfml_example3 ${SFML_LIBRARIES})
+    # target_link_libraries(sfml_example1 ${SFML_LIBRARIES})
+    # target_link_libraries(sfml_example2 ${SFML_LIBRARIES})
+    # target_link_libraries(sfml_example3 ${SFML_LIBRARIES})
 endif()
 
 
