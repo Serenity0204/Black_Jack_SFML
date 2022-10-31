@@ -1,72 +1,8 @@
 #include <bits/stdc++.h>
 #include <SFML/Graphics.hpp>
+#include "includes/game/game.h"
+#include "includes/game_config/game_config.h"
 using namespace std;
-
-const string PATH = "../assets/";
-const string CLUBS = "_of_clubs.png";
-const string DIAMONDS = "_of_diamonds.png";
-const string HEARTS = "_of_hearts.png";
-const string SPADES = "_of_SPADES.png";
-
-
-
-class Game;
-class Config;
-
-
-class Game
-{
-private:
-    sf::RenderWindow window;
-public:
-    Game()
-    {
-        window.create(sf::VideoMode(1500, 1000), "Black Jack");
-    }
-    ~Game(){};
-
-    // main loop
-    void run()
-    {
-        sf::RectangleShape shape(sf::Vector2f(200, 40));
-        shape.setFillColor(sf::Color::Green);
-
-        while (window.isOpen())
-        {
-            sf::Event event;
-            while (window.pollEvent(event))
-            {
-                if (event.type == sf::Event::Closed)
-                    window.close();
-            }
-
-            window.clear();
-            window.draw(shape);
-            window.display();
-        }
-    }
-};
-
-
-
-class Config
-{
-private:
-    vector<vector<sf::Texture>> cards_holder;
-    vector<vector<sf::Sprite>> cards;
-    vector<sf::Texture> bets;
-public:
-    friend class Game;
-    Config(){}
-    ~Config(){}
-    void init(){}
-};
-
-
-
-
-
-
 
 
 
