@@ -20,12 +20,10 @@ class Game_Config
 private:
     vector<vector<sf::Texture>> cards_holder;
     vector<vector<sf::Sprite>> cards;
-    vector<Button> buttons;
+    
 
     //Button btn;
 public:
-    sf::Texture _texture;
-    sf::Sprite btn;
     Game_Config();
     ~Game_Config(){}
     void init();

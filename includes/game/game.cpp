@@ -37,8 +37,8 @@ void Game::run()
 
 
 
-
-
+    string path = "../assets/stand.png";
+    Button stand(path, 355.f, 525.f);
 
 
 
@@ -69,8 +69,7 @@ void Game::run()
         if(j == 4) j = 0;
         this->_window.clear();
         this->_window.draw(game_config.get_cards()[j][i]);
-
-        this->_window.draw(game_config.btn);
+        this->_window.draw(Button::get_btns()[0]);
         this->_window.draw(text);
         this->_window.display();
     }
