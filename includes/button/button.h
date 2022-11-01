@@ -10,9 +10,10 @@ using namespace std;
 class Button
 {
 private:
-    sf::Texture _texture;
+    
     
 public:
+    sf::Texture _texture;
     sf::Sprite btn;
     Button(){}
     Button(string path, float x_pos, float y_pos);

@@ -23,7 +23,15 @@ Game_Config::Game_Config()
 
 void Game_Config::init()
 {
-    
+
+    string path = "../assets/stand.png";
+
+
+    this->_texture.loadFromFile(path);
+    this->btn.setTexture(this->_texture);
+    this->btn.setPosition(sf::Vector2f(355.f, 525.f));
+
+
     // creating sprites
     for(int i = 0; i < 4; ++i)
     {
@@ -95,7 +103,3 @@ vector<vector<sf::Sprite>>& Game_Config::get_cards()
 }
 
 
-vector<Button>& Game_Config::get_button()
-{
-    return this->buttons;
-}
