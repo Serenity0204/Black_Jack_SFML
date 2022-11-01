@@ -13,6 +13,31 @@ void Game::run()
     Game_Config game_config;
     game_config.init();
     int i = 0;
+    int j = 0;
+
+
+
+    sf::Font font;
+    font.loadFromFile("../assets/arial.ttf");
+    sf::Text text;
+    // select the font
+    text.setFont(font); // font is a sf::Font
+    // set the string to display
+    text.setString("Black Jack");
+    // set the character size
+    text.setCharacterSize(24); // in pixels, not points!
+    // set the color
+    text.setFillColor(sf::Color::Red);
+    // set the text style
+    text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+    text.setPosition(sf::Vector2f(355.f, 125.f));
+
+
+
+
+
+
+
 
 
 
@@ -36,11 +61,17 @@ void Game::run()
             }
 
         }
-
+        if(i == 13)
+        {
+            i = 0;
+            j++;
+        }
+        if(j == 4) j = 0;
         this->_window.clear();
-        this->_window.draw(game_config.get_cards()[3][i]);
-        
+        this->_window.draw(game_config.get_cards()[j][i]);
+
         this->_window.draw(game_config.btn);
+        this->_window.draw(text);
         this->_window.display();
     }
 }
