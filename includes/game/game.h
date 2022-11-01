@@ -11,10 +11,11 @@ using namespace std;
 class Game
 {
 private:
+    sf::RenderWindow _window;
 public:
 
 
-    Game(sf::RenderWindow& window);
+    Game();
     ~Game();
     
     // main loop
