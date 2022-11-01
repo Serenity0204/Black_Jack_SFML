@@ -17,15 +17,15 @@ const string SPADES = "_of_SPADES.png";
 class Game_Config
 {
 private:
-
-public:
     vector<vector<sf::Texture>> cards_holder;
     vector<vector<sf::Sprite>> cards;
     vector<sf::Texture> bets;
+public:
 
     Game_Config();
     ~Game_Config(){}
     void init();
+    vector<vector<sf::Sprite>>& get_cards();
 };
 
 

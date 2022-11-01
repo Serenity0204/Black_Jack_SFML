@@ -13,11 +13,9 @@ class Game
 private:
     sf::RenderWindow _window;
 public:
-
-
     Game();
     ~Game();
-    
+
     // main loop
     void run();
 };

@@ -85,3 +85,11 @@ void Game_Config::init()
         }
     }
 }
+
+
+vector<vector<sf::Sprite>>& Game_Config::get_cards()
+{
+    return this->cards;
+}
+
+

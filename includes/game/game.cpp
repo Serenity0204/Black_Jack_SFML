@@ -22,7 +22,7 @@ void Game::run()
         }
 
         this->_window.clear();
-        this->_window.draw(game_config.cards[3][11]);
+        this->_window.draw(game_config.get_cards()[3][11]);
         this->_window.display();
     }
 }
