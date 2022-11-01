@@ -84,6 +84,11 @@ void Game_Config::init()
             cards[i][j] = sprite;
         }
     }
+
+    sf::Texture txt;
+    txt.loadFromFile("../assets/place.png");
+    sf::Sprite button(txt);
+    this->btn.push_back(button);
 }
 
 

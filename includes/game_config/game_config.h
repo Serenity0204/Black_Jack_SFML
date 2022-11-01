@@ -17,6 +17,7 @@ const string SPADES = "_of_SPADES.png";
 class Game_Config
 {
 private:
+    vector<sf::Sprite> btn;
     vector<vector<sf::Texture>> cards_holder;
     vector<vector<sf::Sprite>> cards;
     vector<sf::Texture> bets;
@@ -25,6 +26,10 @@ public:
     Game_Config();
     ~Game_Config(){}
     void init();
+    sf::Sprite& get_btn()
+    {
+        return this->btn[0];
+    }
     vector<vector<sf::Sprite>>& get_cards();
 };
 
