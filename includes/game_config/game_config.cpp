@@ -24,7 +24,6 @@ Game_Config::Game_Config()
 void Game_Config::init()
 {
     
-
     // creating sprites
     for(int i = 0; i < 4; ++i)
     {
@@ -85,10 +84,8 @@ void Game_Config::init()
         }
     }
 
-    sf::Texture txt;
-    txt.loadFromFile("../assets/place.png");
-    sf::Sprite button(txt);
-    this->btn.push_back(button);
+
+
 }
 
 
@@ -98,3 +95,7 @@ vector<vector<sf::Sprite>>& Game_Config::get_cards()
 }
 
 
+vector<Button>& Game_Config::get_button()
+{
+    return this->buttons;
+}

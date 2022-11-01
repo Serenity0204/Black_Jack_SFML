@@ -13,6 +13,12 @@ void Game::run()
     Game_Config game_config;
     game_config.init();
     int i = 0;
+
+
+    string path = "../assets/stand.png";
+    Button button(path, 355.f, 525.f);
+
+
     while (this->_window.isOpen())
     {
         sf::Event event;
@@ -34,9 +40,9 @@ void Game::run()
         }
 
         this->_window.clear();
-        game_config.get_btn().setPosition(355, 525);
-        this->_window.draw(game_config.get_btn());
         this->_window.draw(game_config.get_cards()[3][i]);
+        
+        this->_window.draw(button.btn);
         this->_window.display();
     }
 }

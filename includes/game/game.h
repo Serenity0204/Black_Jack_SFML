@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <bits/stdc++.h>
 #include "../game_config/game_config.h"
+#include "../button/button.h"
 using namespace std;
 
 

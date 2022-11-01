@@ -2,6 +2,7 @@
 #define GAME_CONFIG_H
 #include <SFML/Graphics.hpp>
 #include <bits/stdc++.h>
+#include "../button/button.h"
 using namespace std;
 
 
@@ -17,19 +18,16 @@ const string SPADES = "_of_SPADES.png";
 class Game_Config
 {
 private:
-    vector<sf::Sprite> btn;
     vector<vector<sf::Texture>> cards_holder;
     vector<vector<sf::Sprite>> cards;
-    vector<sf::Texture> bets;
+    vector<Button> buttons;
+    
 public:
-
+    
     Game_Config();
     ~Game_Config(){}
     void init();
-    sf::Sprite& get_btn()
-    {
-        return this->btn[0];
-    }
+    vector<Button>& get_button();
     vector<vector<sf::Sprite>>& get_cards();
 };
 
