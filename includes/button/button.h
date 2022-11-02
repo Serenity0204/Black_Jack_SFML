@@ -32,7 +32,7 @@ public:
     {
         const string path = "../assets/stand.png";
         std::shared_ptr<sf::Sprite> btn = make_texture(path, 355.f, 525.f);
-        return btn;
+        return Button::_btns[0];
     }
 
 };
