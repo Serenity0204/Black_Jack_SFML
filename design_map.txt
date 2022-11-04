@@ -1,0 +1,14 @@
+Game::
+    - main entry
+    - update windows
+    - get input
+
+Game_Config::
+    - instantiate game configurations like card sprites and card textures
+    - provide a init method for the main entry to call, to init 
+
+Button::
+    - button class that provides other classes to init
+    - button class also contains textures and sprites
+
+// todo
