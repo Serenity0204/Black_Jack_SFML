@@ -6,18 +6,7 @@
 
 Game_Config::Game_Config()
 {
-    // initialize size of 2d
-    cards_holder.resize(4);
-    for(int i = 0; i < 4; ++i)
-    {
-        cards_holder[i].resize(13);
-    }
-    
-    cards.resize(4);
-    for(int i = 0; i < 4; ++i)
-    {
-        cards[i].resize(13);
-    }
+
 }
 
 
@@ -27,15 +16,39 @@ void Game_Config::init()
         
     //this->btn.setTexture(this->_texture);
     //this->btn.setPosition(sf::Vector2f(355.f, 525.f));
+    Button::init_btns();
+
+
+
+
+    // initialize size of 2d
+    _cards_texture.resize(4);
+    for(int i = 0; i < 4; ++i)
+    {
+        _cards_texture[i].resize(13);
+    }
     
+    _cards.resize(4);
+    for(int i = 0; i < 4; ++i)
+    {
+        _cards[i].resize(13);
+    }
+
+
+
+
+
+
+
+
 
     // creating sprites
     for(int i = 0; i < 4; ++i)
     {
-        sf::Texture t;
         for(int j = 0; j < 13; ++j)
         {
-            cards_holder[i][j] = t;    
+            auto ptr = std::make_shared<sf::Texture>();
+            _cards_texture[i][j] = ptr;    
         }
     }
 
@@ -66,16 +79,16 @@ void Game_Config::init()
         }
 
         string clubs = PATH + temp + CLUBS;
-        cards_holder[0][i].loadFromFile(clubs);
+        _cards_texture[0][i]->loadFromFile(clubs);
         
         string diamonds = PATH + temp + DIAMONDS;
-        cards_holder[1][i].loadFromFile(diamonds);
+        _cards_texture[1][i]->loadFromFile(diamonds);
 
         string hearts = PATH + temp + HEARTS;
-        cards_holder[2][i].loadFromFile(hearts);
+        _cards_texture[2][i]->loadFromFile(hearts);
 
         string spades = PATH + temp + SPADES;
-        cards_holder[3][i].loadFromFile(spades);
+        _cards_texture[3][i]->loadFromFile(spades);
     }
 
 
@@ -84,8 +97,9 @@ void Game_Config::init()
     {
         for(int j = 0; j < 13; ++j)
         {
-            sf::Sprite sprite(cards_holder[i][j]);
-            cards[i][j] = sprite;
+            auto ptr = std::make_shared<sf::Sprite>();
+            ptr->setTexture(*_cards_texture[i][j]);
+            _cards[i][j] = ptr;
         }
     }
 
@@ -94,9 +108,5 @@ void Game_Config::init()
 }
 
 
-vector<vector<sf::Sprite>>& Game_Config::get_cards()
-{
-    return this->cards;
-}
 
 

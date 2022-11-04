@@ -18,16 +18,18 @@ const string SPADES = "_of_SPADES.png";
 class Game_Config
 {
 private:
-    vector<vector<sf::Texture>> cards_holder;
-    vector<vector<sf::Sprite>> cards;
+    vector<vector<std::shared_ptr<sf::Texture>>> _cards_texture;
+    vector<vector<std::shared_ptr<sf::Sprite>>> _cards;
     
-
-    //Button btn;
+    bool is_init;
 public:
     Game_Config();
     ~Game_Config(){}
     void init();
-    vector<vector<sf::Sprite>>& get_cards();
+    vector<vector<std::shared_ptr<sf::Sprite>>>& get_cards()
+    {
+        return Game_Config::_cards;
+    }
 };
 
 

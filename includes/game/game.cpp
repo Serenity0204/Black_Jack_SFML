@@ -34,8 +34,7 @@ void Game::run()
 
 
 
-
-    auto ptr = Button::init_btns();
+    vector<vector<std::shared_ptr<sf::Sprite>>> a = game_config.get_cards();
 
     // string path = "../assets/stand.png";
     // Button stand(path, 355.f, 525.f);
@@ -68,8 +67,8 @@ void Game::run()
         }
         if(j == 4) j = 0;
         this->_window.clear();
-        this->_window.draw(game_config.get_cards()[j][i]);
-        this->_window.draw(*ptr);
+        this->_window.draw(*a[j][i]);
+        this->_window.draw(*Button::get_btn());
         this->_window.draw(text);
         this->_window.display();
     }
