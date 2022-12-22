@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
-project(cs3a)
+project(Black_Jack)
 
 #. . . . . . . . . . . . . . . . . . . .
 include(GNUInstallDirs)
