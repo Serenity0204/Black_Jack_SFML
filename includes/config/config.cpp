@@ -103,6 +103,7 @@ void Config::_set_texture()
         spade_ptr->loadFromFile(clubs);
         string spade_hash = "s" + to_string(i + 1);
         this->_texture_map[spade_hash] = spade_ptr;
+        
     
     }
 }
