@@ -19,17 +19,19 @@ enum FONTS
 const int WINDOW_HEIGHT = 1000;
 const int WINDOW_WIDTH = 1200;
 const int INPUT_BOX_FONT_SIZE = 24;
-const int CHAR_LIMIT = 15;
+const int CHAR_LIMIT = 4;
+const int MAX_CARDS = 5;
+
 const string PATH = "../assets/";
 const string CLUBS = "_of_clubs.png";
 const string DIAMONDS = "_of_diamonds.png";
 const string HEARTS = "_of_hearts.png";
-const string SPADES = "_of_SPADES.png";
+const string SPADES = "_of_spades.png";
 
 
 // system variable config
 // ADD SYSTEM  VARIABLE HERE
-const sf::Vector2f INPUT_BOX_SIZE = sf::Vector2f(300, 100);
+const sf::Vector2f INPUT_BOX_SIZE = sf::Vector2f(75, 35);
 const sf::Vector2f INPUT_BOX_POS = sf::Vector2f(680, 840);
 
 

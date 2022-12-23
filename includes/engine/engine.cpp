@@ -9,6 +9,9 @@ Engine::Engine()
 
     // ADD MORE IN CTOR
     this->_input_box = InputBox(INPUT_BOX_FONT_SIZE, INPUT_BOX_SIZE, INPUT_BOX_POS, sf::Color::Red, sf::Color::White, false);
+    this->_card_deck = CardDeck();
+
+
 }
 
 // RELEASE MEMORY IN DESTRUCTOR IF USED NEW
@@ -51,11 +54,16 @@ void Engine::input()
             this->_input_box.typedOn(event);   
         }
 
-        // User press key on keyboard
-        // if(sf::Keyboard::isKeyPressed(sf::Keyboard::THE KEY))
-        // {
 
-        // }
+        CardDeck cd;
+        // User press key on keyboard
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        {
+            if(this->_current_cards.size() == MAX_CARDS) break;
+            Card c = cd.draw_card();
+            c.set_card_position({500, 500});
+            this->_current_cards.push_back(c);
+        }
 
         
     }
@@ -74,15 +82,14 @@ void Engine::input()
 void Engine::display()
 {
     // ADD MORE THINGS TO DRAW
-    // this->_window.draw();
     this->_input_box.drawTo(this->_window);
-    
-    
-    Card c("s", 12);
-    // Config c;
-    // sf::Sprite s;
-    // s.setTexture(c.get_texture("s13"));
-    this->_window.draw(c.get_card());
+
+    for(int i = 0; i < this->_current_cards.size(); ++i)
+    {
+        this->_window.draw(this->_current_cards[i].get_card());
+    }
+
+
 }
 
 void Engine::run()
@@ -95,7 +102,7 @@ void Engine::run()
     {
         this->_update_input_box();
         this->input();
-        this->_window.clear();
+        this->_window.clear(sf::Color(0, 102, 0));
         this->display();
         this->_window.display();
     }

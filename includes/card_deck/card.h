@@ -19,7 +19,7 @@ public:
     Card(string suit, int rank);
     ~Card();
     sf::Sprite& get_card();
-    
+    void set_card_position(sf::Vector2f pos);
 };
 
 

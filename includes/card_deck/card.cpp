@@ -29,3 +29,7 @@ sf::Sprite& Card::get_card()
     return this->_card;
 }
 
+void Card::set_card_position(sf::Vector2f pos)
+{
+    this->_card.setPosition(pos);
+}

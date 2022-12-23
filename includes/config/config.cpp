@@ -80,27 +80,26 @@ void Config::_set_texture()
         string clubs = PATH + temp + CLUBS;
         auto club_ptr = std::make_shared<sf::Texture>();
         club_ptr->loadFromFile(clubs);
-
         string club_hash = "c" + to_string(i + 1);
         this->_texture_map[club_hash] = club_ptr;
    
 
         string diamonds = PATH + temp + DIAMONDS;
         auto diamond_ptr = std::make_shared<sf::Texture>();
-        diamond_ptr->loadFromFile(clubs);
+        diamond_ptr->loadFromFile(diamonds);
         string diamond_hash = "d" + to_string(i + 1);
         this->_texture_map[diamond_hash] = diamond_ptr;
 
 
         string hearts = PATH + temp + HEARTS;
         auto heart_ptr = std::make_shared<sf::Texture>();
-        heart_ptr->loadFromFile(clubs);
+        heart_ptr->loadFromFile(hearts);
         string heart_hash = "h" + to_string(i + 1);
         this->_texture_map[heart_hash] = heart_ptr;
 
         string spades = PATH + temp + SPADES;
         auto spade_ptr = std::make_shared<sf::Texture>();
-        spade_ptr->loadFromFile(clubs);
+        spade_ptr->loadFromFile(spades);
         string spade_hash = "s" + to_string(i + 1);
         this->_texture_map[spade_hash] = spade_ptr;
         
