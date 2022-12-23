@@ -2,6 +2,7 @@
 #define BUTTON_H
 
 #include <iostream>
+#include "../config/config.h"
 #include <SFML/Graphics.hpp>
 
 class Button {
