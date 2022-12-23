@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "../config/config.h"
 #include "../input_box/input_box.h"
+#include "../card_deck/card.h"
 using namespace std;
 
 

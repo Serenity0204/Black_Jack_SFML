@@ -77,10 +77,12 @@ void Engine::display()
     // this->_window.draw();
     this->_input_box.drawTo(this->_window);
     
-    sf::Sprite s;
-    Config c;
-    s.setTexture(c.get_texture("s13"));
-    this->_window.draw(s);
+    
+    Card c("s", 12);
+    // Config c;
+    // sf::Sprite s;
+    // s.setTexture(c.get_texture("s13"));
+    this->_window.draw(c.get_card());
 }
 
 void Engine::run()
