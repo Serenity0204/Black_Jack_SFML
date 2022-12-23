@@ -61,7 +61,7 @@ void Engine::input()
         {
             if(this->_current_cards.size() == MAX_CARDS) break;
             Card c = cd.draw_card();
-            c.set_card_position({500, 500});
+            //c.set_card_position({500, 500});
             this->_current_cards.push_back(c);
         }
 
@@ -86,6 +86,7 @@ void Engine::display()
 
     for(int i = 0; i < this->_current_cards.size(); ++i)
     {
+        this->_current_cards[i].set_card_position({float(50 + 200 * i), 500});
         this->_current_cards[i].drawTo(this->_window);
     }
 
