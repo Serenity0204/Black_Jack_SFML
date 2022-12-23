@@ -22,14 +22,15 @@ string Card::get_card_hash()
 }
 
 
-sf::Sprite& Card::get_card()
-{
-    string hash = this->get_card_hash();
-    this->_card.setTexture(Card::_config.get_texture(hash));
-    return this->_card;
-}
-
 void Card::set_card_position(sf::Vector2f pos)
 {
     this->_card.setPosition(pos);
+}
+
+
+void Card::drawTo(sf::RenderWindow &window)
+{
+    string hash = this->get_card_hash();
+    this->_card.setTexture(Card::_config.get_texture(hash));
+    window.draw(this->_card);
 }

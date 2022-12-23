@@ -86,7 +86,7 @@ void Engine::display()
 
     for(int i = 0; i < this->_current_cards.size(); ++i)
     {
-        this->_window.draw(this->_current_cards[i].get_card());
+        this->_current_cards[i].drawTo(this->_window);
     }
 
 

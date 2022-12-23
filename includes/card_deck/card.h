@@ -18,7 +18,7 @@ public:
     Card();
     Card(string suit, int rank);
     ~Card();
-    sf::Sprite& get_card();
+    void drawTo(sf::RenderWindow &window);
     void set_card_position(sf::Vector2f pos);
 };
 
