@@ -63,6 +63,7 @@ void Engine::input()
             Card c = cd.draw_card();
             //c.set_card_position({500, 500});
             this->_current_cards.push_back(c);
+            
         }
 
         
