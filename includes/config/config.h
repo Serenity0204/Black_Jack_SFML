@@ -28,11 +28,12 @@ const string DIAMONDS = "_of_diamonds.png";
 const string HEARTS = "_of_hearts.png";
 const string SPADES = "_of_spades.png";
 
+//const string 
 
 // system variable config
 // ADD SYSTEM  VARIABLE HERE
 const sf::Vector2f INPUT_BOX_SIZE = sf::Vector2f(75, 35);
-const sf::Vector2f INPUT_BOX_POS = sf::Vector2f(680, 840);
+const sf::Vector2f INPUT_BOX_POS = sf::Vector2f(1100, 650);
 
 
 

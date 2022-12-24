@@ -25,7 +25,8 @@ private:
     
     // private helper functions here
     void _update_input_box();
-
+    void _draw_constant_text();
+    
 public:
     // constructors and destructors
     Engine();
