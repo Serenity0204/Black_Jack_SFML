@@ -83,10 +83,10 @@ void Engine::_draw_constant_text()
     betInputTitle.setFont(font);
     betInputTitle.setString("Enter your bet");
     betInputTitle.setCharacterSize(20);
-    betInputTitle.setPosition({1050, 625});
+    betInputTitle.setPosition({1050, 325});
     betInputTitle.setFillColor(sf::Color::Cyan);
     this->_window.draw(betInputTitle);
-
+    
 }
 
 
@@ -100,7 +100,7 @@ void Engine::display()
 
     for(int i = 0; i < this->_current_cards.size(); ++i)
     {
-        this->_current_cards[i].set_card_position({float(850 - 200 * i), 500});
+        this->_current_cards[i].set_card_position({float(850 - 180 * i), 325});
         this->_current_cards[i].drawTo(this->_window);
     }
 

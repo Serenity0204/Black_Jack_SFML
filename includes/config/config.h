@@ -16,7 +16,7 @@ enum FONTS
 
 // windows
 // ADD WINDOWS CONFIG VARIABLE HERE
-const int WINDOW_HEIGHT = 1000;
+const int WINDOW_HEIGHT = 600;
 const int WINDOW_WIDTH = 1200;
 const int INPUT_BOX_FONT_SIZE = 24;
 const int CHAR_LIMIT = 4;
@@ -33,7 +33,7 @@ const string SPADES = "_of_spades.png";
 // system variable config
 // ADD SYSTEM  VARIABLE HERE
 const sf::Vector2f INPUT_BOX_SIZE = sf::Vector2f(75, 35);
-const sf::Vector2f INPUT_BOX_POS = sf::Vector2f(1100, 650);
+const sf::Vector2f INPUT_BOX_POS = sf::Vector2f(1100, 350);
 
 
 

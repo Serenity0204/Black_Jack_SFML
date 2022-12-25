@@ -105,6 +105,12 @@ void Config::_set_texture()
         
     
     }
+    string bet = "1";
+    for(int i = 0; i < 4; ++i)
+    {
+        string temp = PATH + bet;
+        bet += "0";
+    }
 }
 
 void Config::_set_font()
