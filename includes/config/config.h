@@ -27,7 +27,7 @@ const string CLUBS = "_of_clubs.png";
 const string DIAMONDS = "_of_diamonds.png";
 const string HEARTS = "_of_hearts.png";
 const string SPADES = "_of_spades.png";
-
+const string PNG = ".png";
 //const string 
 
 // system variable config

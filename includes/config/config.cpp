@@ -108,9 +108,16 @@ void Config::_set_texture()
     string bet = "1";
     for(int i = 0; i < 4; ++i)
     {
-        string temp = PATH + bet;
+        string temp = PATH + bet + PNG;
+        
+        auto ptr = std::make_shared<sf::Texture>();
+        ptr->loadFromFile(temp);
+        this->_texture_map[bet] = ptr;
         bet += "0";
     }
+    auto p = std::make_shared<sf::Texture>();
+    p->loadFromFile("../assets/max.png");
+    this->_texture_map["max"] = p;
 }
 
 void Config::_set_font()

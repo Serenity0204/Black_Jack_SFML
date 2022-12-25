@@ -8,14 +8,56 @@ Engine::Engine()
     this->_window.setKeyRepeatEnabled(true);
 
     // ADD MORE IN CTOR
+    this->_init_buttons();
     this->_input_box = InputBox(INPUT_BOX_FONT_SIZE, INPUT_BOX_SIZE, INPUT_BOX_POS, sf::Color::Red, sf::Color::White, false);
     this->_card_deck = CardDeck();
 
 
 }
 
+
 // RELEASE MEMORY IN DESTRUCTOR IF USED NEW
 Engine::~Engine(){}
+
+void Engine::_update_buttons(sf::Event& event)
+{
+    for(int i = 0; i < this->_buttons.size(); ++i)
+    {
+        if(this->_buttons[i].isMouseOver(this->_window))
+        {
+            this->_buttons[i].setBackColor(sf::Color::Yellow);
+            continue;
+        }
+        this->_buttons[i].setBackColor(sf::Color::White);
+    }
+    for(int i = 0; i < this->_buttons.size(); ++i)
+    {
+        if(this->_buttons[i].isMouseOver(this->_window) && event.type == sf::Event::MouseButtonPressed)
+        {
+            cout << "hit" << endl;
+        }
+    }
+}
+
+void Engine::_init_buttons()
+{
+    Button btn("HIT", {150, 50}, 25, sf::Color::White, sf::Color::Red);
+    btn.setFont(this->_config.get_font(ARIAL));
+    btn.setPosition({250, 250});
+    this->_buttons.push_back(btn);
+}
+
+
+void Engine::_draw_button()
+{
+    for(int i = 0; i < this->_buttons.size(); ++i)
+    {
+        this->_buttons[i].drawTo(this->_window);
+    }
+}
+
+
+
 
 
 void Engine::_update_input_box()
@@ -65,10 +107,13 @@ void Engine::input()
             this->_current_cards.push_back(c);
             
         }
-
+        this->_update_buttons(event);
         
     }
 }
+
+
+
 
 
 
@@ -87,6 +132,22 @@ void Engine::_draw_constant_text()
     betInputTitle.setFillColor(sf::Color::Cyan);
     this->_window.draw(betInputTitle);
     
+    vector<sf::Sprite> holds;
+    string bet = "1";
+    for(int i = 0; i < 4; ++i)
+    {
+        sf::Sprite bets(this->_config.get_texture(bet));
+        bets.setPosition({1100, float(10 + 60 * i)});
+        holds.push_back(bets);
+        bet += "0";
+    }
+    sf::Sprite m(this->_config.get_texture("max"));
+    m.setPosition({1100, 250});
+    holds.push_back(m);
+    for(int i = 0; i < holds.size(); ++i)
+    {
+        this->_window.draw(holds[i]);
+    }
 }
 
 
@@ -96,6 +157,7 @@ void Engine::display()
     // ADD MORE THINGS TO DRAW
 
     this->_draw_constant_text();
+    this->_draw_button();
     this->_input_box.drawTo(this->_window);
 
     for(int i = 0; i < this->_current_cards.size(); ++i)
