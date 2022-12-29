@@ -5,6 +5,18 @@
 using namespace std;
 
 
+class Header
+{
+private:
+    sf::RectangleShape _header;
+    sf::Text _text;
+public:
+    Header();
+    Header(std::string headerText, sf::Vector2f headerSize, sf::Vector2f headerPos, int charSize, sf::Color bgColor, sf::Color textColor);
+    ~Header();
 
+    void setFont(sf::Font &fonts);
+    void drawTo(sf::RenderWindow &window);
+};
 
 #endif

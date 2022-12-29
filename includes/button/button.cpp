@@ -1,8 +1,8 @@
 #include "button.h"
 
-Button::Button() {
 
-}
+
+Button::Button() {}
 
 Button::Button(std::string btnText, sf::Vector2f buttonSize, int charSize, sf::Color bgColor, sf::Color textColor) {
 	button.setSize(buttonSize);

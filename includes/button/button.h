@@ -1,7 +1,7 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
-#include <iostream>
+#include <bits/stdc++.h>
 #include "../config/config.h"
 #include <SFML/Graphics.hpp>
 
@@ -29,7 +29,12 @@ public:
 
 	// Check if the mouse is within the bounds of the button:
 	bool isMouseOver(sf::RenderWindow &window);
+
+
 private:
+	static vector<Button> _buttons;
+	static void _init_buttons();
+
 	sf::RectangleShape button;
 	sf::Text text;
 

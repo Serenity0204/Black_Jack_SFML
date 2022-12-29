@@ -6,6 +6,7 @@
 #include "../input_box/input_box.h"
 #include "../button/button.h"
 #include "../card_deck/card_deck.h"
+#include "../header/header.h"
 using namespace std;
 
 
@@ -16,22 +17,28 @@ private:
     sf::RenderWindow _window;
 
     // system setup here
+    bool _entered_bet;
     Config _config;
     InputBox _input_box;
     CardDeck _card_deck;
-
+    Header _header;
+    
     // private member variables here
     vector<Card> _current_cards;
     vector<Button> _buttons;
     
     // private helper functions here
-    
-    void _update_input_box();
-    void _draw_constant_text();
-
+    // init
     void _init_buttons();
-    void _draw_button();
+
+    // update 
+    void _update_input_box();
     void _update_buttons(sf::Event& event);
+
+    // draw
+    void _draw_constant_text();
+    void _draw_button();
+    
 public:
     // constructors and destructors
     Engine();

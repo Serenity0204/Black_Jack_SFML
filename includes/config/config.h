@@ -13,12 +13,18 @@ enum FONTS
     ARIAL = 0,
 };
 
+enum BUTTONS
+{
+    HIT = 0,
+    STAND = 1,
+};
+
 
 // windows
 // ADD WINDOWS CONFIG VARIABLE HERE
 const int WINDOW_HEIGHT = 600;
 const int WINDOW_WIDTH = 1200;
-const int INPUT_BOX_FONT_SIZE = 24;
+const int FONT_SIZE = 24;
 const int CHAR_LIMIT = 4;
 const int MAX_CARDS = 5;
 
