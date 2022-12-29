@@ -19,6 +19,14 @@ enum BUTTONS
     STAND = 1,
 };
 
+enum RANKS
+{
+    ACE = 1,
+    TEN = 10,
+    JACK = 11,
+    QUEEN = 12,
+    KING = 13,
+};
 
 // windows
 // ADD WINDOWS CONFIG VARIABLE HERE

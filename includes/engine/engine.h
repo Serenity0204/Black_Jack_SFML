@@ -7,6 +7,8 @@
 #include "../button/button.h"
 #include "../card_deck/card_deck.h"
 #include "../header/header.h"
+#include "../logic/logic.h"
+#include "../player/player.h"
 using namespace std;
 
 
@@ -22,7 +24,7 @@ private:
     InputBox _input_box;
     CardDeck _card_deck;
     Header _header;
-    
+    Player _player;
     // private member variables here
     vector<Card> _current_cards;
     vector<Button> _buttons;

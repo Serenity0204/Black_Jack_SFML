@@ -17,7 +17,7 @@ Engine::Engine()
 
     this->_input_box = InputBox(FONT_SIZE, INPUT_BOX_SIZE, INPUT_BOX_POS, sf::Color::Red, sf::Color::White, false);
     this->_card_deck = CardDeck();
-
+    this->_player = Player();
 
 }
 
@@ -31,27 +31,30 @@ void Engine::input()
     sf::Event event;
     while (this->_window.pollEvent(event))
     {
+        if(this->_entered_bet) this->_update_buttons(event);
+
         // User quit
-        if (event.type == sf::Event::Closed)
+        if(event.type == sf::Event::Closed)
         {
             cout << "User Quit" << endl;
             this->_window.close();
         }
 
         // User input text
-        if (event.type == sf::Event::TextEntered)
+        if(event.type == sf::Event::TextEntered)
         {
             this->_input_box.typedOn(event);   
         }
 
-
-        
         // User press key on keyboard
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !this->_entered_bet)
         {
+            StrToIntParser parser(this->_input_box.getText());
+            int bet = parser.to_int();
+            if(bet == -1) break;
             this->_entered_bet = !this->_entered_bet;
+            cout << "Bet: " << bet << endl;
         }
-        if(this->_entered_bet) this->_update_buttons(event);
         
     }
 }
@@ -160,7 +163,10 @@ void Engine::_update_buttons(sf::Event& event)
         }
         if(clicked && i == STAND)
         {
-            cout << "stand" << endl;
+            cout << "hit" << endl;
+            this->_player.calculate_points(this->_current_cards);
+            int points = this->_player.get_points();
+            cout << "player points: " << points << endl;
             continue;
         }
     }

@@ -19,10 +19,14 @@ private:
         return true;
     }
 public:
-    StrToIntParser(string str);
+    StrToIntParser(string str)
+    {
+        this->_str = str;
+    }
     // if can not be converted to int, return -1, else into int
     int to_int()
     {
+        if(this->_str.length() == 0) return -1;
         if(!this->is_digit()) return -1;
         return stoi(this->_str);
     }
@@ -31,17 +35,17 @@ public:
 
 
 
-class Logic
-{
-private:
-public:
-    Logic();
-    ~Logic();
-    bool check_user_busted(int points);
-    bool check_user_black_jack(int points);
-    bool check_tie(int user_points, int dealer_points);
-    bool check_user_win(int user_points, int dealder_points);
-};
+// class Logic
+// {
+// private:
+// public:
+//     Logic();
+//     ~Logic();
+//     bool check_user_busted(int points);
+//     bool check_user_black_jack(int points);
+//     bool check_tie(int user_points, int dealer_points);
+//     bool check_user_win(int user_points, int dealder_points);
+// };
 
 
 
