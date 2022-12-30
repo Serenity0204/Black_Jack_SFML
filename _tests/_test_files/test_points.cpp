@@ -65,7 +65,23 @@ bool test_player_card3(bool debug=false)
   return true;
 }
 
+bool test_player_card4(bool debug=false)
+{
+  vector<Card> cards;
+  cards.push_back(Card("s", 1));
+  cards.push_back(Card("s", 1));
+  cards.push_back(Card("s", 10));
 
+  Player player;
+  player.calculate_points(cards);
+  int p = player.get_points();
+  if(debug)
+  {
+    cout << "Points: " << p << endl; 
+  }
+  if(p != 12) return false;
+  return true;
+}
 
 
 //Lord help me! 
@@ -88,6 +104,14 @@ TEST(TEST_PLAYER, TestPlayer3)
   bool success = test_player_card3(debug);
   EXPECT_EQ(success, true);
 }
+
+
+TEST(TEST_PLAYER, TestPlayer4)
+{
+  bool success = test_player_card4(debug);
+  EXPECT_EQ(success, true);
+}
+
 
 int main(int argc, char **argv)
 {
