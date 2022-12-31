@@ -11,7 +11,8 @@ Engine::Engine()
 
     // ADD MORE IN CTOR
     this->_entered_bet = false;
-    this->_init_buttons();
+    //this->_init_buttons();
+    this->_buttons = Buttons();
     this->_header = Header("Enter the bet to proceed", {400, 50},{250, 250}, 35, sf::Color::Black, sf::Color::White);
     
 
@@ -31,19 +32,40 @@ void Engine::input()
     sf::Event event;
     while (this->_window.pollEvent(event))
     {
-        if(this->_entered_bet) this->_update_buttons(event);
+        //if(this->_entered_bet) this->_update_buttons(event);
+
+        int action = this->_buttons.update_buttons(this->_window, event, this->_entered_bet);
+        //if(action == INVALID) break;
+        //cout << "action:" << action << endl;
+        if(action == HIT && this->_current_cards.size() < MAX_CARDS)
+        {
+            cout << "hit" << endl;
+            Card c = this->_card_deck.draw_card();
+            this->_current_cards.push_back(c); 
+            break;
+        }
+        if(action == STAND)
+        {
+            cout << "stand" << endl;
+            this->_player.calculate_points(this->_current_cards);
+            int points = this->_player.get_points();
+            cout << "player points: " << points << endl;
+            break;
+        }
 
         // User quit
         if(event.type == sf::Event::Closed)
         {
             cout << "User Quit" << endl;
             this->_window.close();
+            //break;
         }
 
         // User input text
         if(event.type == sf::Event::TextEntered)
         {
             this->_input_box.typedOn(event);   
+            break;
         }
 
         // User press key on keyboard
@@ -59,6 +81,7 @@ void Engine::input()
                 this->_current_cards.push_back(c);
             }
             cout << "Bet: " << bet << endl;
+            break;
         }
         
     }
@@ -72,7 +95,8 @@ void Engine::display()
     this->_draw_constant_text();
     
     if(!this->_entered_bet) this->_header.drawTo(this->_window);
-    if(this->_entered_bet) this->_draw_button();
+    //if(this->_entered_bet) this->_draw_button();
+    if(this->_entered_bet) this->_buttons.draw_button(this->_window);
 
     this->_input_box.drawTo(this->_window);
 
@@ -98,7 +122,7 @@ void Engine::run()
 
     while (this->_window.isOpen())
     {
-        this->_update_input_box();
+        this->_input_box.update_input_box();
         this->input();
         this->_window.clear(sf::Color(0, 102, 0));
         this->display();
@@ -114,100 +138,6 @@ void Engine::run()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-// buttons
-// *****************************************************************************************************************
-
-// init
-void Engine::_init_buttons()
-{
-    Button hit_btn("HIT", {150, 50}, 25, sf::Color::White, sf::Color::Red);
-    hit_btn.setFont(this->_config.get_font(ARIAL));
-    hit_btn.setPosition({250, 250});
-    this->_buttons.push_back(hit_btn);
-
-    Button stand_btn("STAND", {150, 50}, 25, sf::Color::White, sf::Color::Red);
-    stand_btn.setFont(this->_config.get_font(ARIAL));
-    stand_btn.setPosition({450, 250});
-    this->_buttons.push_back(stand_btn);
-}
-
-// update
-void Engine::_update_buttons(sf::Event& event)
-{
-    for(int i = 0; i < this->_buttons.size(); ++i)
-    {
-        if(this->_buttons[i].isMouseOver(this->_window))
-        {
-            this->_buttons[i].setBackColor(sf::Color::Yellow);
-            continue;
-        }
-        this->_buttons[i].setBackColor(sf::Color::White);
-    }
-    for(int i = 0; i < this->_buttons.size(); ++i)
-    {
-        bool clicked = this->_buttons[i].isMouseOver(this->_window) && event.type == sf::Event::MouseButtonPressed;
-        if(clicked && i == HIT)
-        {
-            if(this->_current_cards.size() == MAX_CARDS) break;
-            cout << "hit" << endl;
-            Card c = this->_card_deck.draw_card();
-            this->_current_cards.push_back(c);
-            continue;
-        }
-        if(clicked && i == STAND)
-        {
-            cout << "hit" << endl;
-            this->_player.calculate_points(this->_current_cards);
-            int points = this->_player.get_points();
-            cout << "player points: " << points << endl;
-            continue;
-        }
-    }
-}
-
-// draw
-void Engine::_draw_button()
-{
-    for(int i = 0; i < this->_buttons.size(); ++i)
-    {
-        this->_buttons[i].drawTo(this->_window);
-    }
-}
-// *****************************************************************************************************************
-
-
-
-
-// input box
-// *****************************************************************************************************************
-void Engine::_update_input_box()
-{
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
-    {
-        //cout << "User selecting input box" << endl;
-        this-> _input_box.setSelected(true);
-        return;
-    }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-    {
-        //cout << "User quit inputing" << endl;
-        this->_input_box.setSelected(false);
-        return;
-    }
-}
-// *****************************************************************************************************************
 
 
 

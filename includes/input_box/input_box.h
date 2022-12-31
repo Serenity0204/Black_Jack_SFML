@@ -36,6 +36,7 @@ public:
 	// Function for event loop:
 	void typedOn(sf::Event &input);
 
+	void update_input_box();	
 private:
 	sf::Text textbox;
 	std::ostringstream text;

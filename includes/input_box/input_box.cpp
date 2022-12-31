@@ -127,3 +127,20 @@ void InputBox::inputLogic(int charTyped) {
     textbox.setString(text.str() + "|");
     //std::cout << text.str() << std::endl;
 }
+
+
+void InputBox::update_input_box()
+{
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+    {
+        //cout << "User selecting input box" << endl;
+        this->setSelected(true);
+        return;
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+    {
+        //cout << "User quit inputing" << endl;
+        this->setSelected(false);
+        return;
+    }
+}

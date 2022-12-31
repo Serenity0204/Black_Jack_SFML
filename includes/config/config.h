@@ -13,11 +13,19 @@ enum FONTS
     ARIAL = 0,
 };
 
-enum BUTTONS
+// enum BUTTONS
+// {
+//     HIT = 0,
+//     STAND = 1,
+// };
+
+enum ACTION_CODE
 {
+    INVALID = -1,
     HIT = 0,
     STAND = 1,
 };
+
 
 enum RANKS
 {
@@ -28,6 +36,8 @@ enum RANKS
     KING = 13,
 };
 
+
+
 // windows
 // ADD WINDOWS CONFIG VARIABLE HERE
 const int WINDOW_HEIGHT = 600;
@@ -36,13 +46,14 @@ const int FONT_SIZE = 24;
 const int CHAR_LIMIT = 4;
 const int MAX_CARDS = 5;
 
+// const string for path  
 const string PATH = "../assets/";
 const string CLUBS = "_of_clubs.png";
 const string DIAMONDS = "_of_diamonds.png";
 const string HEARTS = "_of_hearts.png";
 const string SPADES = "_of_spades.png";
 const string PNG = ".png";
-//const string 
+
 
 // system variable config
 // ADD SYSTEM  VARIABLE HERE
