@@ -128,3 +128,34 @@ void Config::_set_font()
     f1->loadFromFile("../assets/arial.ttf");
     this->_font_map[ARIAL] = f1;
 }
+
+
+void Config::draw_constants(sf::RenderWindow &window)
+{
+    sf::Font font = this->get_font(ARIAL);
+    sf::Text betInputTitle;
+    betInputTitle.setFont(font);
+    betInputTitle.setString("Enter your bet\n(Press Enter)");
+    betInputTitle.setCharacterSize(20);
+    betInputTitle.setPosition({1050, 325});
+    betInputTitle.setFillColor(sf::Color::Red);
+    window.draw(betInputTitle);
+    
+    vector<sf::Sprite> holds;
+    string bet = "1";
+    for(int i = 0; i < 4; ++i)
+    {
+        sf::Sprite bets(this->get_texture(bet));
+        bets.setPosition({1100, float(10 + 60 * i)});
+        holds.push_back(bets);
+        bet += "0";
+    }
+
+    sf::Sprite m(this->get_texture("max"));
+    m.setPosition({1100, 250});
+    holds.push_back(m);
+    for(int i = 0; i < holds.size(); ++i)
+    {
+        window.draw(holds[i]);
+    }
+}

@@ -35,11 +35,7 @@ private:
     
     // private helper functions here
 
-    // update 
-    void _update_input_box();
-
-    // draw
-    void _draw_constant_text();
+    
     
 public:
     // constructors and destructors

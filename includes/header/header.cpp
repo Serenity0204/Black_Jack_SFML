@@ -27,3 +27,8 @@ void Header::drawTo(sf::RenderWindow &window)
 	window.draw(_header);
 	window.draw(_text);
 }
+
+void Header::setHeader(string text)
+{
+	_text.setString(text);
+}

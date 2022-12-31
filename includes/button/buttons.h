@@ -16,8 +16,8 @@ private:
 public:
     Buttons();
     ~Buttons();
-    int update_buttons(sf::RenderWindow &window, sf::Event& event, bool can_update);
-    void draw_button(sf::RenderWindow &window);
+    int update_buttons(sf::RenderWindow &window, sf::Event& event, bool can_update=false);
+    void draw_buttons(sf::RenderWindow &window);
 };
 
 #endif // !BUTTONS_H
