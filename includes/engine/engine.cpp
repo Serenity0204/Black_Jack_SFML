@@ -53,6 +53,11 @@ void Engine::input()
             int bet = parser.to_int();
             if(bet == -1) break;
             this->_entered_bet = !this->_entered_bet;
+            for(int i = 0; i < 2; ++i)
+            {
+                Card c = this->_card_deck.draw_card();
+                this->_current_cards.push_back(c);
+            }
             cout << "Bet: " << bet << endl;
         }
         
