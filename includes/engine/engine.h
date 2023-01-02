@@ -19,7 +19,6 @@ private:
     sf::RenderWindow _window;
 
     // system setup here
-    Config _config;
     InputBox _input_box;
     CardDeck _card_deck;
     Buttons _buttons;

@@ -15,7 +15,6 @@ Buttons::~Buttons(){}
 // init buttons used in this project
 void Buttons::_init_buttons()
 {
-    Config config;
     Button hit_btn("HIT", {150, 50}, 25, sf::Color::White, sf::Color::Red);
     hit_btn.setFont(config.get_font(ARIAL));
     hit_btn.setPosition({700, 250});
@@ -34,10 +33,8 @@ void Buttons::_init_buttons()
 
 
 // return action code 
-int Buttons::update_buttons(sf::RenderWindow &window, sf::Event& event, bool can_update)
+int Buttons::update_buttons(sf::RenderWindow &window, sf::Event& event)
 {
-
-
     for(int i = 0; i < this->_buttons.size(); ++i)
     {
         if(this->_buttons[i].isMouseOver(window))
@@ -59,7 +56,6 @@ int Buttons::update_buttons(sf::RenderWindow &window, sf::Event& event, bool can
 
 void Buttons::draw_buttons(sf::RenderWindow &window)
 {
-    Config config;
     for(int i = 0; i < this->_buttons.size(); ++i)
     {
         this->_buttons[i].setFont(config.get_font(ARIAL));

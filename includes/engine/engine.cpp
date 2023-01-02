@@ -29,7 +29,7 @@ void Engine::input()
     sf::Event event;
     while (this->_window.pollEvent(event))
     {
-        int action = this->_buttons.update_buttons(this->_window, event, this->_entered_bet);
+        int action = this->_buttons.update_buttons(this->_window, event);
         if(action == HIT && this->_current_cards.size() < MAX_CARDS)
         {
             cout << "hit" << endl;
@@ -102,7 +102,7 @@ void Engine::display()
 {
     // ADD MORE THINGS TO DRAW
 
-    this->_config.draw_constants(this->_window);
+    config.draw_constants(this->_window);
     
     // if(!this->_entered_bet) 
     this->_header.drawTo(this->_window);
@@ -125,7 +125,7 @@ void Engine::display()
 // main loop
 void Engine::run()
 {
-    sf::Font arial = this->_config.get_font(ARIAL);
+    sf::Font arial = config.get_font(ARIAL);
     this->_input_box.setFont(arial);
     this->_input_box.setLimit(true, CHAR_LIMIT);
     this->_header.setFont(arial);

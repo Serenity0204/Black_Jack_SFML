@@ -9,7 +9,6 @@ using namespace std;
 class Card
 {
 private:
-    static Config _config;
     string _suit;
     int _rank;
     sf::Sprite _card;

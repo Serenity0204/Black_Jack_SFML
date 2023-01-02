@@ -1,6 +1,8 @@
 #include "config.h"
 
 
+Config config = Config();
+
 
 Config::Config()
 {
@@ -159,3 +161,6 @@ void Config::draw_constants(sf::RenderWindow &window)
         window.draw(holds[i]);
     }
 }
+
+
+
