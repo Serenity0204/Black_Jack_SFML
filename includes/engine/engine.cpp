@@ -113,6 +113,7 @@ void Engine::run()
 void Engine::_init()
 {
     this->_entered_bet = false;
+    this->_bet = 0;
     this->_player_cards = vector<Card>();
     this->_dealer_cards = vector<Card>();
 
@@ -142,6 +143,7 @@ void Engine::_update_bet_event()
         Card c = this->_card_deck.draw_card();
         this->_dealer_cards.push_back(c);
     }
+    this->_bet = bet;
     cout << "Bet: " << bet << endl;
 }
 
@@ -172,17 +174,22 @@ void Engine::_update_buttons_event(sf::Event& event)
         if(win_code == WIN)
         {
             this->_header.setHeader(WIN_MESSAGE);
+            this->_player.set_bet(2 * this->_bet, false);
+            cout << "now user has: " << this->_player.get_bet() << endl;
             return;
         }
         if(win_code == TIE)
         {
             this->_header.setHeader(TIE_MESSAGE);
+            cout << "now user has: " << this->_player.get_bet() << endl;
             return;
         }
 
         if(win_code == LOSE)
         {
             this->_header.setHeader(LOSE_MESSAGE);
+            this->_player.set_bet(this->_bet, true);
+            cout << "now user has: " << this->_player.get_bet() << endl;
             return;
         }
     }
