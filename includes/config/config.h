@@ -23,6 +23,8 @@ public:
     sf::Font& get_font(int index);
 };
 
+
+// global instance here
 extern Config config;
 
 
