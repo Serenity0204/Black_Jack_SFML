@@ -24,7 +24,8 @@ private:
     Buttons _buttons;
     Header _header;
     Player _player;
-    
+    Player _dealer;
+
     // private member variables here
     bool _entered_bet;
     vector<Card> _player_cards;
@@ -33,9 +34,9 @@ private:
 
     
     // private helper functions here
-
-    
-    
+    void _init();
+    void _update_buttons_event(sf::Event& event);
+    void _update_bet_event();
 public:
     // constructors and destructors
     Engine();

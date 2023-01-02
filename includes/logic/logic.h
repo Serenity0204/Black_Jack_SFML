@@ -15,6 +15,7 @@ private:
         for(int i = 0; i < this->_str.length(); ++i)
         {
             // 48 - 57
+            if(i == 0 && this->_str[i] == '0') return false;
             if(!(this->_str[i] >= 48 && this->_str[i] <= 57)) return false;
         }
         return true;

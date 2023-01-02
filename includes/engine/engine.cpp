@@ -10,18 +10,75 @@ Engine::Engine()
     this->_window.setKeyRepeatEnabled(true);
 
     // ADD MORE IN CTOR
+    this->_init();
+}
+
+void Engine::_init()
+{
     this->_entered_bet = false;
     this->_buttons = Buttons();
     this->_header = Header(WELCOME_MESSAGE, HEADER_SIZE, HEADER_POS, HEADER_FONT_SIZE, sf::Color(0, 102, 0), sf::Color::Red);
     this->_input_box = InputBox(INPUT_BOX_FONT_SIZE, INPUT_BOX_SIZE, INPUT_BOX_POS, sf::Color::Red, sf::Color::White, false);
     this->_card_deck = CardDeck();
     this->_player = Player();
-
+    this->_dealer = Player();
 }
 
 
 // RELEASE MEMORY IN DESTRUCTOR IF USED NEW
 Engine::~Engine(){}
+
+
+void Engine::_update_buttons_event(sf::Event& event)
+{
+    int action = this->_buttons.update_buttons(this->_window, event);
+    if(action == HIT && this->_player_cards.size() < MAX_CARDS)
+    {
+        cout << "hit" << endl;
+        Card c = this->_card_deck.draw_card();
+        this->_player_cards.push_back(c); 
+        return;
+    }
+    if(action == STAND)
+    {
+        cout << "stand" << endl;
+        this->_player.calculate_points(this->_player_cards);
+        int points = this->_player.get_points();
+        cout << "player points: " << points << endl;
+        this->_entered_bet = false;
+        if(points > 21)
+        {
+            this->_header.setHeader(LOSE_MESSAGE);
+            return;
+        }
+        else
+        {
+            this->_header.setHeader(WIN_MESSAGE);
+            return;
+        }
+    }
+    if(action == ANOTHER_GAME)
+    {
+        this->_player_cards.clear();
+        this->_entered_bet = false;
+        this->_header.setHeader(WELCOME_MESSAGE);
+    }
+}
+
+
+void Engine::_update_bet_event()
+{
+    StrToIntParser parser(this->_input_box.getText());
+    int bet = parser.to_int();
+    if(bet == -1) return;
+    this->_entered_bet = true;
+    for(int i = 0; i < 2; ++i)
+    {
+        Card c = this->_card_deck.draw_card();
+        this->_player_cards.push_back(c);
+    }
+    cout << "Bet: " << bet << endl;
+}
 
 // taking input
 void Engine::input()
@@ -29,40 +86,9 @@ void Engine::input()
     sf::Event event;
     while (this->_window.pollEvent(event))
     {
-        int action = this->_buttons.update_buttons(this->_window, event);
-        if(action == HIT && this->_player_cards.size() < MAX_CARDS)
-        {
-            cout << "hit" << endl;
-            Card c = this->_card_deck.draw_card();
-            this->_player_cards.push_back(c); 
-            break;
-        }
-        if(action == STAND)
-        {
-            cout << "stand" << endl;
-            this->_player.calculate_points(this->_player_cards);
-            int points = this->_player.get_points();
-            cout << "player points: " << points << endl;
-            this->_entered_bet = false;
-            if(points > 21)
-            {
-                this->_header.setHeader(LOSE_MESSAGE);
-                break;
-            }
-            else
-            {
-                this->_header.setHeader(WIN_MESSAGE);
-                break;
-            }
-        }
-        if(action == ANOTHER_GAME)
-        {
-            this->_player_cards.clear();
-            this->_entered_bet = false;
-            this->_header.setHeader(WELCOME_MESSAGE);
-        }
 
 
+        this->_update_buttons_event(event);
         // User quit
         if(event.type == sf::Event::Closed)
         {
@@ -81,17 +107,7 @@ void Engine::input()
         // User press key on keyboard
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !this->_entered_bet)
         {
-            StrToIntParser parser(this->_input_box.getText());
-            int bet = parser.to_int();
-            if(bet == -1) break;
-            this->_entered_bet = true;
-            for(int i = 0; i < 2; ++i)
-            {
-                Card c = this->_card_deck.draw_card();
-                this->_player_cards.push_back(c);
-            }
-            cout << "Bet: " << bet << endl;
-            break;
+            this->_update_bet_event();
         }
         
     }
