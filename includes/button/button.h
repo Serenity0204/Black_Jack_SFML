@@ -32,9 +32,6 @@ public:
 
 
 private:
-	static vector<Button> _buttons;
-	static void _init_buttons();
-
 	sf::RectangleShape button;
 	sf::Text text;
 
