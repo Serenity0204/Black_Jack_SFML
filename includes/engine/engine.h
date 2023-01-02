@@ -24,11 +24,11 @@ private:
     Buttons _buttons;
     Header _header;
     Player _player;
-
+    
     // private member variables here
     bool _entered_bet;
-    vector<Card> _current_cards;
-
+    vector<Card> _player_cards;
+    vector<Card> _dealer_cards;
     
 
     

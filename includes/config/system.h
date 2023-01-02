@@ -31,7 +31,12 @@ enum RANKS
     KING = 13,
 };
 
-
+enum WIN_OR_LOSE
+{
+    LOSE = -1,
+    TIE = 0,
+    WIN = 1,
+};
 
 // windows
 // ADD WINDOWS CONFIG VARIABLE HERE

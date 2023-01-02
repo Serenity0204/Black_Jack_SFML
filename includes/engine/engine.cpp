@@ -30,17 +30,17 @@ void Engine::input()
     while (this->_window.pollEvent(event))
     {
         int action = this->_buttons.update_buttons(this->_window, event);
-        if(action == HIT && this->_current_cards.size() < MAX_CARDS)
+        if(action == HIT && this->_player_cards.size() < MAX_CARDS)
         {
             cout << "hit" << endl;
             Card c = this->_card_deck.draw_card();
-            this->_current_cards.push_back(c); 
+            this->_player_cards.push_back(c); 
             break;
         }
         if(action == STAND)
         {
             cout << "stand" << endl;
-            this->_player.calculate_points(this->_current_cards);
+            this->_player.calculate_points(this->_player_cards);
             int points = this->_player.get_points();
             cout << "player points: " << points << endl;
             this->_entered_bet = false;
@@ -57,7 +57,7 @@ void Engine::input()
         }
         if(action == ANOTHER_GAME)
         {
-            this->_current_cards.clear();
+            this->_player_cards.clear();
             this->_entered_bet = false;
             this->_header.setHeader(WELCOME_MESSAGE);
         }
@@ -88,7 +88,7 @@ void Engine::input()
             for(int i = 0; i < 2; ++i)
             {
                 Card c = this->_card_deck.draw_card();
-                this->_current_cards.push_back(c);
+                this->_player_cards.push_back(c);
             }
             cout << "Bet: " << bet << endl;
             break;
@@ -110,10 +110,10 @@ void Engine::display()
 
     this->_input_box.drawTo(this->_window);
 
-    for(int i = 0; i < this->_current_cards.size(); ++i)
+    for(int i = 0; i < this->_player_cards.size(); ++i)
     {
-        this->_current_cards[i].set_card_position({float(850 - 180 * i), 325});
-        this->_current_cards[i].drawTo(this->_window);
+        this->_player_cards[i].set_card_position({float(850 - 180 * i), 325});
+        this->_player_cards[i].drawTo(this->_window);
     }
 
 
