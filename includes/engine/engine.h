@@ -8,7 +8,8 @@
 #include "../card_deck/card_deck.h"
 #include "../header/header.h"
 #include "../logic/logic.h"
-#include "../player/player.h"
+#include "../user/player.h"
+#include "../user/dealer.h"
 using namespace std;
 
 
@@ -24,7 +25,7 @@ private:
     Buttons _buttons;
     Header _header;
     Player _player;
-    Player _dealer;
+    Dealer _dealer;
 
     // private member variables here
     bool _entered_bet;

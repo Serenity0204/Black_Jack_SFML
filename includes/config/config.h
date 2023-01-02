@@ -18,7 +18,7 @@ private:
 public:
     Config();
     ~Config();
-    void draw_constants(sf::RenderWindow &window);
+    void draw_constants(sf::RenderWindow &window, bool exclude=true);
     sf::Texture& get_texture(string index);
     sf::Font& get_font(int index);
 };

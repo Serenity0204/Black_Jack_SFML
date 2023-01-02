@@ -132,7 +132,7 @@ void Config::_set_font()
 }
 
 
-void Config::draw_constants(sf::RenderWindow &window)
+void Config::draw_constants(sf::RenderWindow &window, bool exclude)
 {
     sf::Font font = this->get_font(ARIAL);
     sf::Text betInputTitle;

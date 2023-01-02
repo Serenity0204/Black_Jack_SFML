@@ -43,7 +43,7 @@ private:
 public:
     Logic();
     ~Logic();
-    int check_user_win(int user_points, int dealder_points);
+    int check_user_win(int player_points, int dealder_points);
 };
 
 

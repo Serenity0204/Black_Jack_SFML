@@ -17,17 +17,17 @@ void Buttons::_init_buttons()
 {
     Button hit_btn("HIT", {150, 50}, 25, sf::Color::White, sf::Color::Red);
     hit_btn.setFont(config.get_font(ARIAL));
-    hit_btn.setPosition({700, 250});
+    hit_btn.setPosition({700, 300});
     this->_buttons.push_back(hit_btn);
 
     Button stand_btn("STAND", {150, 50}, 25, sf::Color::White, sf::Color::Red);
     stand_btn.setFont(config.get_font(ARIAL));
-    stand_btn.setPosition({900, 250});
+    stand_btn.setPosition({900, 300});
     this->_buttons.push_back(stand_btn);
 
     Button another_game_btn("Another Game", {200, 50}, 25, sf::Color::White, sf::Color::Red);
     another_game_btn.setFont(config.get_font(ARIAL));
-    another_game_btn.setPosition({450, 250});
+    another_game_btn.setPosition({450, 300});
     this->_buttons.push_back(another_game_btn);
 }
 

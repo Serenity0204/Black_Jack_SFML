@@ -1,31 +1,19 @@
-#include "player.h"
+#include "user.h"
 
-
-Player::Player()
+User::User()
 {
-    this->_bet = 2500;
-    this->_points = 0;
+
 }
 
-Player::~Player(){}
-
-void Player::set_bet(int amount, bool did_lose)
+User::~User()
 {
-    if(did_lose)
-    {
-        this->_bet -= amount;
-        return;
-    }
-    this->_bet += amount;
+
 }
 
 
-void Player::reset()
-{
-    this->_points = 0;
-}
 
-void Player::calculate_points(vector<Card>& cards)
+
+int User::calculate_points(vector<Card>& cards)
 {
     int ace_count = 0;
     int total = 0;
@@ -58,21 +46,6 @@ void Player::calculate_points(vector<Card>& cards)
     if(ace_count == 2 && !busted) total += 12;
     if(ace_count == 2 && busted) total += 2;
 
-    this->_points = total;
     cards.clear();
-}
-
-
-
-
-int Player::get_points()
-{
-    int points = this->_points;
-    this->reset();
-    return points;
-}
-
-int Player::get_bet()
-{
-    return this->_bet;
+    return total;
 }
