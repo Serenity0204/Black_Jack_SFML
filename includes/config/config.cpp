@@ -120,6 +120,10 @@ void Config::_set_texture()
     auto p = std::make_shared<sf::Texture>();
     p->loadFromFile("../assets/max.png");
     this->_texture_map["max"] = p;
+
+    p = std::make_shared<sf::Texture>();
+    p->loadFromFile("../assets/cardBack.png");
+    this->_texture_map["back"] = p;
 }
 
 void Config::_set_font()
@@ -139,7 +143,7 @@ void Config::draw_constants(sf::RenderWindow &window, bool exclude)
     betInputTitle.setFont(font);
     betInputTitle.setString("Enter your bet\n(Press Enter)");
     betInputTitle.setCharacterSize(20);
-    betInputTitle.setPosition({1050, 325});
+    betInputTitle.setPosition({1060, 325});
     betInputTitle.setFillColor(sf::Color::Red);
     window.draw(betInputTitle);
     
@@ -156,6 +160,13 @@ void Config::draw_constants(sf::RenderWindow &window, bool exclude)
     sf::Sprite m(this->get_texture("max"));
     m.setPosition({1100, 250});
     holds.push_back(m);
+
+    if(exclude)
+    {
+        sf::Sprite b(this->get_texture("back"));
+        b.setPosition({670, 25});
+        holds.push_back(b);
+    }
     for(int i = 0; i < holds.size(); ++i)
     {
         window.draw(holds[i]);

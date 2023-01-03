@@ -46,6 +46,5 @@ int User::calculate_points(vector<Card>& cards)
     if(ace_count == 2 && !busted) total += 12;
     if(ace_count == 2 && busted) total += 2;
 
-    cards.clear();
     return total;
 }

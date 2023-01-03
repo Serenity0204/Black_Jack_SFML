@@ -24,6 +24,7 @@ private:
     CardDeck _card_deck;
     Buttons _buttons;
     Header _header;
+    Header _bet_board;
     Player _player;
     Dealer _dealer;
 

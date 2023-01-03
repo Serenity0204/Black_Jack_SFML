@@ -72,6 +72,8 @@ const sf::Vector2f HEADER_SIZE = sf::Vector2f(400, 50);
 const sf::Vector2f HEADER_POS = sf::Vector2f(10, 300);
 
 
+const sf::Vector2f BET_BOARD_SIZE = sf::Vector2f(75, 35);
+const sf::Vector2f BET_BOARD_POS = sf::Vector2f(1100, 450);
 
 
 
