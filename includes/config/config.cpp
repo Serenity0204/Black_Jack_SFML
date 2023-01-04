@@ -124,6 +124,10 @@ void Config::_set_texture()
     p = std::make_shared<sf::Texture>();
     p->loadFromFile("../assets/cardBack.png");
     this->_texture_map["back"] = p;
+
+    p = std::make_shared<sf::Texture>();
+    p->loadFromFile("../assets/lose.png");
+    this->_texture_map["lose"] = p;
 }
 
 void Config::_set_font()

@@ -14,7 +14,7 @@ public:
     Header();
     Header(std::string headerText, sf::Vector2f headerSize, sf::Vector2f headerPos, int charSize, sf::Color bgColor, sf::Color textColor);
     ~Header();
-
+    string getHeader(){return this->_text.getString();}
     void setHeader(string text);
     void setFont(sf::Font &fonts);
     void drawTo(sf::RenderWindow &window);

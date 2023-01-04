@@ -135,6 +135,10 @@ void Engine::_update_bet_event()
     StrToIntParser parser(this->_input_box.getText());
     int bet = parser.to_int();
     if(bet == -1) return;
+    string bet_str = this->_bet_board.getHeader();
+    int original_bet = stoi(bet_str.substr(1, bet_str.length()));
+    if(bet > original_bet) return;
+
     this->_player_cards.clear();
     this->_dealer_cards.clear();
     this->_entered_bet = true;
