@@ -57,7 +57,13 @@ void Engine::input()
 void Engine::display()
 {
     // ADD MORE THINGS TO DRAW
-
+    if(this->_end)
+    {
+        sf::Sprite end(config.get_texture("lose"));
+        end.setPosition({175,75});
+        this->_window.draw(end);
+        return;
+    }
     
     
     this->_header.drawTo(this->_window);
@@ -114,6 +120,7 @@ void Engine::run()
 void Engine::_init()
 {
     this->_entered_bet = false;
+    this->_end = false;
     this->_bet = 0;
     this->_player_cards = vector<Card>();
     this->_dealer_cards = vector<Card>();
@@ -212,9 +219,9 @@ void Engine::_update_buttons_event(sf::Event& event)
         if(win_code == LOSE)
         {
             this->_header.setHeader(LOSE_MESSAGE);
-            this->_player.set_bet(this->_bet, true);
             this->_bet_board.setHeader("$" + to_string(this->_player.get_bet()));
             cout << "now user has: " << this->_player.get_bet() << endl;
+            if(this->_player.get_bet() == 0) this->_end = true;
             return;
         }
     }
@@ -222,7 +229,8 @@ void Engine::_update_buttons_event(sf::Event& event)
     {
         this->_player_cards.clear();
         this->_dealer_cards.clear();
-
+        this->_player.set_bet(this->_bet, false);
+        this->_bet_board.setHeader("$" + to_string(this->_player.get_bet()));
         this->_entered_bet = false;
         this->_header.setHeader(WELCOME_MESSAGE);
     }

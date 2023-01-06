@@ -31,6 +31,7 @@ private:
     // private member variables here
     bool _entered_bet;
     int _bet;
+    bool _end;
     vector<Card> _player_cards;
     vector<Card> _dealer_cards;
     
