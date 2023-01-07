@@ -117,23 +117,16 @@ void Config::_set_texture()
         this->_texture_map[bet] = ptr;
         bet += "0";
     }
-    auto p = std::make_shared<sf::Texture>();
-    p->loadFromFile("../assets/max.png");
-    this->_texture_map["max"] = p;
-
-    p = std::make_shared<sf::Texture>();
-    p->loadFromFile("../assets/cardBack.png");
-    this->_texture_map["back"] = p;
-
-    p = std::make_shared<sf::Texture>();
-    p->loadFromFile("../assets/lose.png");
-    this->_texture_map["lose"] = p;
+    this->_load_texture_helper();
 }
+
+
+
+
 
 void Config::_set_font()
 {
     // set font example
-    
     auto f1 = std::make_shared<sf::Font>();
     f1->loadFromFile("../assets/arial.ttf");
     this->_font_map[ARIAL] = f1;
@@ -179,3 +172,21 @@ void Config::draw_constants(sf::RenderWindow &window, bool exclude)
 
 
 
+void Config::_load_texture_helper()
+{
+    auto p = std::make_shared<sf::Texture>();
+    p->loadFromFile("../assets/max.png");
+    this->_texture_map["max"] = p;
+
+    p = std::make_shared<sf::Texture>();
+    p->loadFromFile("../assets/cardBack.png");
+    this->_texture_map["back"] = p;
+
+    p = std::make_shared<sf::Texture>();
+    p->loadFromFile("../assets/lose.png");
+    this->_texture_map["lose"] = p;
+
+    p = std::make_shared<sf::Texture>();
+    p->loadFromFile("../assets/win.png");
+    this->_texture_map["win"] = p;  
+}

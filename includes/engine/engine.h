@@ -23,6 +23,7 @@ private:
     InputBox _input_box;
     CardDeck _card_deck;
     Buttons _buttons;
+    Button _restart;
     Header _header;
     Header _bet_board;
     Player _player;

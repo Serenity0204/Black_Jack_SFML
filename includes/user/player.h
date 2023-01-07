@@ -18,7 +18,7 @@ public:
     // member functions
     void set_bet(int amount, bool did_lose=false);
     int get_bet();
-    
+    int reset();
 };
 
 

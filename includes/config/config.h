@@ -15,6 +15,9 @@ private:
     std::shared_ptr<sf::Texture> _get_texture(string key);
     void _set_texture();
     void _set_font();
+
+    // load texture helper
+    void _load_texture_helper();
 public:
     Config();
     ~Config();

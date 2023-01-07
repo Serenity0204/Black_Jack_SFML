@@ -50,6 +50,21 @@ void Engine::input()
             break;
         }
         
+        if(this->_restart.isMouseOver(this->_window) && this->_end) this->_restart.setBackColor(sf::Color::Yellow);
+        if(!this->_restart.isMouseOver(this->_window) && this->_end) this->_restart.setBackColor(sf::Color::White);
+        
+        if(this->_restart.isMouseOver(this->_window) && this->_end && event.type == sf::Event::MouseButtonPressed)
+        {
+            cout << "Restart" << endl;
+            this->_end = false;
+            this->_player.reset();
+            this->_player.set_bet(2500, false);
+            this->_bet_board.setHeader("$" + to_string(this->_player.get_bet()));
+            this->_header.setHeader(WELCOME_MESSAGE);
+            this->_player_cards.clear();
+            this->_dealer_cards.clear();
+            break;
+        }
     }
 }
 
@@ -57,14 +72,22 @@ void Engine::input()
 void Engine::display()
 {
     // ADD MORE THINGS TO DRAW
-    if(this->_end)
+    if(this->_end && this->_player.get_bet() == 0)
     {
         sf::Sprite end(config.get_texture("lose"));
         end.setPosition({175,75});
         this->_window.draw(end);
+        this->_restart.drawTo(this->_window);
         return;
     }
-    
+    if(this->_end && this->_player.get_bet() >= 10000)
+    {
+        sf::Sprite end(config.get_texture("win"));
+        end.setPosition({175,75});
+        this->_window.draw(end);
+        this->_restart.drawTo(this->_window);
+        return;
+    }
     
     this->_header.drawTo(this->_window);
     this->_bet_board.drawTo(this->_window);
@@ -96,6 +119,8 @@ void Engine::run()
     this->_input_box.setLimit(true, CHAR_LIMIT);
     this->_header.setFont(arial);
     this->_bet_board.setFont(arial);
+    this->_restart.setFont(arial);  
+    this->_restart.setPosition({300, 500});
 
     while (this->_window.isOpen())
     {
@@ -126,6 +151,7 @@ void Engine::_init()
     this->_dealer_cards = vector<Card>();
 
     this->_buttons = Buttons();
+    this->_restart = Button("Play Again", {200, 50}, 25, sf::Color::White, sf::Color::Red);
     this->_header = Header(WELCOME_MESSAGE, HEADER_SIZE, HEADER_POS, HEADER_FONT_SIZE, sf::Color(0, 102, 0), sf::Color::Red);
     this->_bet_board = Header("$" + to_string(this->_player.get_bet()), BET_BOARD_SIZE, BET_BOARD_POS, INPUT_BOX_FONT_SIZE, sf::Color(0, 102, 0), sf::Color(255,215,0));
 
@@ -205,6 +231,7 @@ void Engine::_update_buttons_event(sf::Event& event)
             this->_player.set_bet(2 * this->_bet, false);
             this->_bet_board.setHeader("$" + to_string(this->_player.get_bet()));
             cout << "now user has: " << this->_player.get_bet() << endl;
+            if(this->_player.get_bet() >= 10000) this->_end = true;
             return;
         }
         if(win_code == TIE)

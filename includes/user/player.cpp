@@ -18,7 +18,10 @@ void Player::set_bet(int amount, bool did_lose)
     this->_bet += amount;
 }
 
-
+int Player::reset()
+{
+    this->_bet = 0;
+}
 
 int Player::calculate_points(vector<Card>& cards)
 {
