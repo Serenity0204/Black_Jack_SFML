@@ -37,16 +37,22 @@ private:
     vector<Card> _dealer_cards;
     
 
-    
     // private helper functions here
+    // init
     void _init();
+    // update
     void _update_buttons_event(sf::Event& event);
     void _update_bet_event();
+    void _update_end_game_event(sf::Event& event);
+    // draw
+    void _draw_end_game();
+    // other helpers
+    void _set_card_pos_helper();
+    void _win_logic_helper(int player_points, int dealer_points);
 public:
     // constructors and destructors
     Engine();
     ~Engine();
-    
     // game processing
     void input();
     void run();

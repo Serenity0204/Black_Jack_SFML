@@ -1,14 +1,16 @@
-Game::
-    - main entry
-    - update windows
-    - get input
-
-Game_Config::
-    - instantiate game configurations like card sprites and card textures
-    - provide a init method for the main entry to call, to init 
-
-Button::
-    - button class that provides other classes to init
-    - button class also contains textures and sprites
-
+project structure:
+    --_tests // unit test using gtest framework(setup included in cmake)
+    --assets // used to store image and Font
+    --includes // where all of the code reside
+      --button // clickable button class, and buttons class for the button used in this project
+      --card_deck // a class for drawing cards, and a drawable card class 
+      --config // managing global resource, and system variables
+      --engine // processing input/output and updating the screen
+      --header // header class to show text and draw to the screen
+      --input_box // input box that allows user to input from Keyboard, for bet event in this project
+      --logic // used to compare the points between user and dealer in each round, also a string to int parser is included here
+      --user // contains an abstract class user, and subclass dealer and player
+    --main.cpp // the main entry of the program
+    --design.txt // project introduction
+    --CMakeLists.txt // cmake for this project
 // todo
